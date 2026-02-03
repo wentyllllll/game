@@ -1,52 +1,53 @@
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
+const headerText = document.querySelector(".header_text");
+const gifObj = document.querySelector(".gif");
 
-let yesScale = 1;
-let noScale = 1;
+let scale = 1;
 let msgIndex = 0;
 
 const messages = [
-    "No 😭",
-    "Are you sure? 🤨",
-    "Really sure? 🥺",
-    "Are you really really sure? 💔",
-    "Think again! 🌹",
-    "Last chance! 😰",
-    "Surely not? 😱",
-    "You're breaking my heart... 💔😭",
-    "Have a heart! ❤️",
-    "Don't do this to me! 😢"
+  "No 😭",
+  "Are you sure?",
+  "Really sure??",
+  "Pookie please... 🥺",
+  "Think about it!",
+  "If you say no, I will be sad",
+  "I will be very sad...",
+  "I will be very very sad...",
+  "Ok fine, I will stop...",
+  "Just kidding, say YES! ❤️"
 ];
 
 noBtn.addEventListener("click", () => {
-    noBtn.innerText = messages[msgIndex];
-    msgIndex = (msgIndex + 1) % messages.length;
 
-    yesScale += 1;
-    noScale -= 0.1;
+  noBtn.innerText = messages[msgIndex];
+  msgIndex = (msgIndex + 1) % messages.length;
 
-    yesBtn.style.transform = `scale(${yesScale})`;
-    noBtn.style.transform = `scale(${noScale})`;
 
-    if (noScale <= 0.3) {
-        noBtn.style.opacity = "0.5";
-    }
+  scale *= 1.45; 
+  yesBtn.style.transform = `scale(${scale})`;
+
+
+  if (scale > 5) {
+      noBtn.style.display = "none";
+      gifObj.style.display = "none";
+      headerText.style.display = "none";
+  }
 });
 
 yesBtn.addEventListener("click", () => {
-    confetti({
-        particleCount: 200,
-        spread: 80,
-        origin: { y: 0.6 },
-        colors: ['#ff0000', '#ff69b4', '#ffffff', '#ff1493']
-    });
+  confetti({
+      particleCount: 150,
+      spread: 70,
+      origin: { y: 0.6 }
+  });
 
-    document.body.innerHTML = `
-    <div style="height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(135deg,#ff758c,#ff7eb3);text-align:center;font-family:'Comic Sans MS',cursive;padding:20px;color:white;">
-      <h1 style="font-size:32px;">SHE SAID YES! 💘🥹</h1>
-      <p style="font-size:24px;">Best girlfriend and valentine in the whole world! I love you so much baby❤️❤️❤️</p>
+  document.body.innerHTML = `
+    <div style="height:100dvh; display:flex; flex-direction:column; justify-content:center; align-items:center; background:linear-gradient(135deg, #ff9a9e, #fecfef); text-align:center;">
+      <h1 style="font-size:36px; color:#d6336c; margin-bottom:20px;">Yayyy! She said YES! 💖</h1>
+      <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" style="width:80%; max-width:300px; border-radius:15px;">
+      <p style="font-size:20px; color:#555; margin-top:20px; padding:0 20px;">Best Valentine ever! ❤️</p>
     </div>
   `;
 });
-
-
