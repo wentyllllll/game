@@ -24,7 +24,7 @@ noBtn.addEventListener("click", () => {
     msgIndex = (msgIndex + 1) % messages.length;
 
     // Skalowanie
-    yesScale += 0.5;
+    yesScale += 1;
     noScale -= 0.1;
 
     yesBtn.style.transform = `scale(${yesScale})`;
@@ -50,3 +50,4 @@ yesBtn.addEventListener("click", () => {
     </div>
   `;
 });
+
